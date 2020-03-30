@@ -1,2 +1,35 @@
 // insertion sort in c++
 
+#include<iostream>
+using namespace std;
+
+void insertion_sort(int array[], int size){
+    int i , j ;
+    for(i = 1; i < size; i++){
+        int current = array[i] ; 
+        for(j = i-1; j >= 0; j--){
+            if(current < array[j]){
+                array[j+1] = array[j];
+            }
+             else{
+                break;
+            }
+        }
+        array[j+1] = current ;
+    }
+}
+int main(){
+    int size ;
+    cout << "enter size of array :-> ";
+    cin >> size ;
+    int array[size] ; 
+    for(int i = 0; i < size ;i++){
+        cin >> array[i] ;
+    }
+
+    insertion_sort(array , size);
+    
+    for(int i = 0; i < size;i++){
+        cout << array[i] ;
+    }
+}
