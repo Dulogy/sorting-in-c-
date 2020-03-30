@@ -1,0 +1,31 @@
+// bubble sort implementation in c++
+
+#include<iostream>
+using namespace std;
+void bubble_sort(int array[], int size){
+    int i , j ;
+    for(i = 0; i < size-1; i++){
+       for(j = 0; j < size-i-1; j++){
+        if(array[j] > array[j+1]){
+            int temp = array[j] ; 
+            array[j] = array[j+1];
+            array[j+1] = temp ; 
+        }
+        }  
+    }
+}
+int main(){
+     int size , i , j;
+    cout << "enter size of array :-> ";
+    cin >> size ;
+    int array[size] ; 
+    for( i = 0; i < size ;i++){
+        cin >> array[i] ;
+    }
+    bubble_sort(array , size) ;          
+
+    for( i = 0; i < size; i++){
+        cout << array[i] << " " ;
+    }
+
+}
