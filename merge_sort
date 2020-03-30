@@ -1,0 +1,57 @@
+// merge sort implementation in c++
+
+#include<iostream>
+using namespace std;
+int main(){
+    //  enter both array elements sorted
+    
+    int size1,size2 ;
+    cout << "enter size of array1 :-> ";
+    cin >> size1 ;
+    int array1[size1] ; 
+    for(int i = 0; i < size1 ;i++){
+        cin >> array1[i] ;
+    }
+     cout << "enter size of array2 :-> ";
+    cin >> size2 ;
+    int array2[size2] ; 
+    for(int i = 0; i < size2 ;i++){
+        cin >> array2[i] ;
+    }
+    int size3 = size1 + size2
+    int array3[size3];
+    int i = 0, j = 0, k = 0;
+    
+    // Traverse both array 
+    
+    while(i <size1 && j < size2){
+        if(array1[i] < array2[j]){
+            array3[k] = array1[i] ;
+            i++ ;
+            k++ ;
+        }
+        else{
+            array3[k] = array2[j] ;
+            j++ ;
+            k++ ;
+        }
+    }
+      // Store remaining elements of first array 
+  
+     while( i < size1){
+            array3[k] = array1[i];
+            i++ ;
+            k++ ;
+        }
+        // Store remaining elements of second array 
+  
+         while( j < size2){
+            array3[k] = array2[j];
+            j++ ;
+            k++ ;
+        }
+        // print sorted merge array
+        for(int i = 0; i < size3; i++){
+            cout << array3[i] <<" " ;
+        }
+}
