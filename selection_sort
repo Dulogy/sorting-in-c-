@@ -1,0 +1,36 @@
+// implementing selection sort in c++
+
+#include<iostream>
+using namespace std;
+int main(){
+    int size ;
+    cout << "enter size of array :-> ";
+    cin >> size ;
+    int array[size] ; 
+    for(int i = 0; i < size ;i++){      // taking input of array elements
+        cin >> array[i] ;
+    }
+    
+    // in each round smallest element goes to its right position
+    // for n elements we require n-1 round ,last element automatically placed at right position 
+    
+    int n = size ;     
+    for(int i = 0; i < n-1; i++){       // n-1 rounds require for sorting  so i<n-1 not n
+        int min = array[i] , min_index = i ;   // always makes first element of unsorted array to min
+        for(int j = i+1; j < n; j++){
+            if(min > array[j]){
+                min = array[j];
+                min_index = j ;
+            }
+        }
+        int temp = array[i] ;             // swapping the min value to ith position
+        array[i] = array[min_index] ;
+        array[min_index] = temp ;
+    }
+    
+    // printing the sorted array
+    for(int i = 0; i < n;i++){     
+        cout << array[i] ;
+    }
+
+}
