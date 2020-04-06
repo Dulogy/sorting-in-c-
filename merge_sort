@@ -1,4 +1,4 @@
-// merge sort implementation in c++
+// merge sort implementation in c++ when both array are sorted and then merge into third array
 
 #include<iostream>
 using namespace std;
