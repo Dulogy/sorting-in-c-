@@ -1,1 +1,50 @@
 
+// implement quicksort in c++ 
+
+int partition(int ar[],int si,int ei){
+    int left = si,right = ei ;
+    int pivot,count = 0 ;
+    for(int i = left+1;i <= right; i++){
+        if(ar[left] > ar[i]){
+            count++ ;
+        }
+    }
+    pivot = left + count ;
+    int temp = ar[pivot] ;
+    ar[pivot] = ar[left] ;
+    ar[left] = temp ;
+    while(left < right){
+        if(ar[left] < ar[pivot])
+        left++ ;
+        else if (ar[pivot] < ar[right])
+        right-- ;
+        else{
+            int temp = ar[left] ;
+            ar[left] = ar[right] ;
+            ar[right] = temp ;
+            left++ ;
+            right-- ;
+        }
+    }
+    return pivot ;
+}
+void quicksort(int ar[],int si,int ei){
+    if(si >= ei)
+        return ;
+    int pi = partition(ar,si,ei) ;
+    quicksort(ar,si,pi-1) ;
+    quicksort(ar,pi+1,ei) ;
+}
+int main(){
+    int n ;
+    cin >> n ;
+    int * ar = new int[n] ;
+    for(int i = 0; i < n; i++){
+        cin >> ar[i] ;
+    }
+    quicksort(ar,0,n-1);
+    for(int i = 0; i < n; i++){
+        cout << ar[i] ;
+    }
+    delete []ar ;
+}
