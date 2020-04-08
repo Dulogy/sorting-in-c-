@@ -1,0 +1,64 @@
+// merge sort by recursion
+
+#include<iostream>
+using namespace std ; 
+// this function merge whole array in sorted order
+
+void merge(int ar[],int si,int ei){
+    int size = ei - si + 1 ;
+    int mid = (si + ei)/2 ;
+    int *out = new int[size];
+    int i = si, j = mid + 1 , k = 0 ;
+    while(i <= mid && j <= ei){
+        if(ar[i] < ar[j]){
+            out[k] = ar[i] ;
+            k++ ;
+            i++ ;
+        }
+        else{
+            out[k] = ar[j] ;
+            j++ ;
+            k++ ;
+        }
+    }
+        while(i <= mid){
+            out[k] = ar[i] ;
+            k++ ;
+            i++ ;
+        }
+        while(j <= ei){
+            out[k] = ar[j] ;
+            k++ ;
+            j++ ;
+        }
+    
+    int m = 0 ;             // making changes in same array so copy back the elements
+    for(int i = si; i <= ei; i++){ 
+        ar[i] = out[m] ;
+        m++ ;
+    }
+    delete[] out ;
+
+ }
+void mergeSort(int ar[],int si,int ei){
+    if(si >= ei)
+    return ;
+    int mid = (si + ei)/2 ;
+    mergeSort(ar,si,mid) ;
+    mergeSort(ar,mid+1,ei) ;
+    merge(ar,si,ei) ;
+
+}
+
+int main(){
+    int n = 10 ;
+    int *ar = new int [n] ; 
+    for(int i = 0; i < n; i++){
+        cin >> ar[i] ;
+    }
+    mergeSort(ar,0,n-1) ;
+    for(int i = 0; i < n; i++){
+        cout << ar[i] <<" ";
+    }
+    delete [] ar ;
+}
